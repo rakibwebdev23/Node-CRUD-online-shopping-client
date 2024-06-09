@@ -25,7 +25,7 @@ const AddShopping = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch('http://localhost:5000/products', {
+                fetch('https://online-shop-server-7pj1otv7q-rakibwebdev23s-projects.vercel.app/products', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
