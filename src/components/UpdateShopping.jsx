@@ -31,7 +31,7 @@ const UpdateShopping = () => {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                fetch(`http://localhost:5000/products/${_id}`, {
+                fetch(`https://online-shop-server-7pj1otv7q-rakibwebdev23s-projects.vercel.app/products/${_id}`, {
                     method: 'PUT',
                     headers: {
                         'content-type': 'application/json'

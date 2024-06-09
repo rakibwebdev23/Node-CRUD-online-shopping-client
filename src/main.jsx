@@ -9,26 +9,45 @@ import {
 } from "react-router-dom";
 import AddShopping from './components/AddShopping.jsx';
 import UpdateShopping from './components/UpdateShopping.jsx';
+import SignUp from './components/SignUp.jsx';
+import SignIn from './components/SignIn.jsx';
+import AuthProvider from './components/AuthProvider.jsx';
+import Users from './components/Users.jsx';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <App></App>,
-    loader: () =>fetch('http://localhost:5000/products')
+    loader: () => fetch('/products')
   },
   {
-    path:'/addShopping',
+    path: '/addShopping',
     element: <AddShopping></AddShopping>
   },
   {
     path: '/updateShopping/:id',
     element: <UpdateShopping></UpdateShopping>,
-    loader: ({params}) => fetch(`http://localhost:5000/products/${params.id}`)
+    loader: ({ params }) => fetch(`/products/${params.id}`)
+  },
+  {
+    path: '/signup',
+    element: <SignUp></SignUp>
+  },
+  {
+    path: '/signin',
+    element: <SignIn></SignIn>
+  },
+  {
+    path: '/users',
+    element: <Users></Users>,
+    loader: () => fetch('/users')
   }
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-     <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>,
 )
